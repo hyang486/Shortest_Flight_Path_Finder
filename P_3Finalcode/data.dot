@@ -1,0 +1,57 @@
+digraph A{
+node DEN [name="Denver International Airport", lat=39.849312, long=104.673828];
+node DFW [name="Dallas/Fort Worth International Airport", lat=32.7079, long=96.9209];
+node MCO [name="Orlando International Airport", lat=28.4240, long=81.3099];
+node IAD [name="Washington (Dulles) International Airport", lat=38.9531, long=77.4565];
+node IAH [name="George Bush Intercontinental Airport", lat=29.9902, long=95.3368];
+node SLC [name="Salt Lake City International Airport", lat=40.7608, long=111.8910];
+node ORD [name="O’Hare International Airport", lat=41.9803, long=87.9090];
+node SFO [name="San Francisco International Airport", lat=37.6213, long=122.3790];
+node JFK [name="John F Kennedy Airport", lat=40.6446, long=73.7858];
+node DTW [name="Detroit Metropolitan Airport", lat=42.2162, long=83.3554];
+DEN -> DEN [weight=0]
+DEN -> DFW [weight=1032]
+DEN -> JFK [weight=2616]
+DEN -> DTW [weight=1807]
+DFW -> DEN [weight=1032]
+DFW -> DFW [weight=0]
+DFW -> MCO [weight=1585]
+DFW -> IAD [weight=1886]
+DFW -> IAH [weight=361]
+DFW -> SLC [weight=1591]
+DFW -> DTW [weight=1587]
+MCO -> DEN [weight=2489]
+MCO -> DFW [weight=1585]
+MCO -> MCO [weight=0]
+MCO -> IAD [weight=1219]
+IAD -> DEN [weight=2337]
+IAD -> DFW [weight=1886]
+IAD -> MCO [weight=1219]
+IAD -> IAD [weight=0]
+IAD -> IAH [weight=1915]
+IAD -> SLC [weight=2942]
+IAH -> IAD [weight=1915]
+IAH -> IAH [weight=0]
+IAH -> SLC [weight=1923]
+IAH -> SFO [weight=2632]
+IAH -> JFK [weight=2280]
+IAH -> DTW [weight=1730]
+SLC -> DEN [weight=629]
+SLC -> DFW [weight=1591]
+SLC -> ORD [weight=2011]
+SLC -> SFO [weight=964]
+ORD -> IAD [weight=947]
+ORD -> IAH [weight=947]
+ORD -> SLC [weight=2011]
+ORD -> ORD [weight=0]
+ORD -> SFO [weight=2971]
+SFO -> SLC [weight=964]
+JFK -> MCO [weight=1519]
+JFK -> IAD [weight=367]
+JFK -> IAH [weight=2280]
+DTW -> SLC [weight=2384]
+DTW -> ORD [weight=377]
+DTW -> SFO [weight=3345]
+DTW -> JFK [weight=819]
+DTW -> DTW [weight=0]
+}

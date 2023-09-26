@@ -1,0 +1,98 @@
+
+###################### runAllTests ############################
+runTests: runBackendDeveloperTests
+	make runBackendDeveloperTests
+
+###################### BackendDeveloper Test ############################
+runBackendDeveloperTests: BackendDeveloperTests.class
+	java --module-path ./javafx-sdk-17.0.7/lib --add-modules javafx.controls --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED -jar junit-platform-console-standalone-1.9.2.jar -cp .:JavaFXTester.jar -c BackendDeveloperTests
+
+
+BackendDeveloperTests.class: BackendDeveloperTests.java AirportPathBD.class AirportPathFinder.class AirportPath.class
+	javac --module-path ./javafx-sdk-17.0.7/lib --add-modules javafx.controls -cp .:junit-platform-console-standalone-1.9.2.jar:JavaFXTester.jar  BackendDeveloperTests.java
+###################### runProgram ############################
+run: AirportPathFinder.class AirportPathGraphADT.class AirportDatabase.class Path.class Airport.class AirportPath.class
+	java --module-path ./javafx-sdk-17.0.7/lib --add-modules javafx.controls AirportPathFinder
+
+###################### Real FD Code ############################
+AirportPathFinder.class: AirportPathFinder.java AirportPathFinderInterface.class 
+	javac --module-path ./javafx-sdk-17.0.7/lib --add-modules javafx.controls AirportPathFinder.java
+
+AirportPathFinderInterface.class: AirportPathFinderInterface.java
+	javac --module-path ./javafx-sdk-17.0.7/lib --add-modules javafx.controls AirportPathFinderInterface.java 
+##################### Real BD Code ###############################
+
+AirportPath.class: AirportPath.java AirportPathInterface.class AirportPathGraphADT.class AirportDatabase.class Path.class Airport.class
+	javac AirportPath.java
+
+AirportPathInterface.class: AirportPathInterface.java
+	javac AirportPathInterface.java
+
+##################### RoleCode BD ###############################
+
+AirportPathBD.class: AirportPathBD.java AirportPathInterfaceBD.class AirportPathGraphADTBD.class AirportDatabaseBD.class PathBD.class AirportBD.class
+	javac AirportPathBD.java
+
+AirportPathInterfaceBD.class: AirportPathInterfaceBD.java
+	javac AirportPathInterfaceBD.java
+
+################### Real AE code placeholder ############################
+
+AirportPathGraphADT.class: AirportPathGraphADT.java AirportPathGraphADTInterface.class
+	javac AirportPathGraphADT.java
+
+AirportPathGraphADTInterface.class: AirportPathGraphADTInterface.java GraphADT.class
+	javac AirportPathGraphADTInterface.java
+
+###################  AE Placeholder for ###########################
+
+AirportPathGraphADTBD.class: AirportPathGraphADTBD.java AirportPathGraphADTInterfaceBD.class
+	javac AirportPathGraphADTBD.java
+
+AirportPathGraphADTInterfaceBD.class: AirportPathGraphADTInterfaceBD.java GraphADT.class
+	javac AirportPathGraphADTInterfaceBD.java
+
+GraphADT.class: GraphADT.java
+	javac GraphADT.java
+####################  Real DW code ############################
+AirportDatabase.class: AirportDatabase.java AirportDatabaseInterface.class
+	javac AirportDatabase.java
+
+AirportDatabaseInterface.class: AirportDatabaseInterface.java
+	javac AirportDatabaseInterface.java
+
+Path.class: Path.java PathInterface.class
+	javac Path.java
+
+PathInterface.class: PathInterface.java
+	javac PathInterface.java
+
+Airport.class: Airport.java AirportInterface.class
+	javac Airport.java
+
+AirportInterface.class: AirportInterface.java
+	javac AirportInterface.java
+
+########################  DW Placeholder for BD #################################
+AirportDatabaseBD.class: AirportDatabaseBD.java AirportDatabaseInterfaceBD.class
+	javac AirportDatabaseBD.java
+
+AirportDatabaseInterfaceBD.class: AirportDatabaseInterfaceBD.java
+	javac AirportDatabaseInterfaceBD.java
+
+PathBD.class: PathBD.java PathInterfaceBD.class
+	javac PathBD.java
+
+PathInterfaceBD.class: PathInterfaceBD.java
+	javac PathInterfaceBD.java
+
+AirportBD.class: AirportBD.java AirportInterfaceBD.class
+	javac AirportBD.java
+
+AirportInterfaceBD.class: AirportInterfaceBD.java
+	javac AirportInterfaceBD.java
+
+#####################################################################
+
+clean:
+	rm *.class
